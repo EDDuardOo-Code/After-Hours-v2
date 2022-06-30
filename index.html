@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery Mobile</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="css/themes/estilosJQM.min.css" />
+        <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="js/jquery.mobile.structure-1.4.5.min.css" /> 
+
+        <script src="js/jquery-1.11.1.min.js"></script> 
+        <script src="js/jquery.mobile-1.4.5.min.js"></script> 
+        <script src="js/crud.js"></script>
+
+    </head>
+    <body>
+        <!-- Página principal -->
+        <div data-role="page" id="principal" style="background-image:url('imagenes/intergradora\ logo\ beta.jpg');background-repeat: no-repeat;background-size: cover;width: 100%; height: 15vh;">
+            <div data-role="content" data-position="fixed" data-theme="e">
+                <center>
+                    <a href="#login" data-inline="true" data-role="button">Presiona!</a>
+                </center>                
+            </div>
+
+        </div>
+
+        <!-- Página de login -->
+        <div data-role="page" data-theme="d" data-dialog="true" id="login">
+            <div data-role="header">
+                <h1>Bienvenido a prototipo</h1> 
+        
+            </div>
+
+            <div data-role="content">
+                <label for="usuario" id="Mes1">No. mesa 1:</label>
+                <input type="number" id="usuario" placeholder="Ingresa su nombre...">
+
+                <a href="#Menu" data-role="button" data-icon="bullets" data-inline="true" onclick="registraUsuario();">Menu</a>
+
+                <a href="#principal" data-role="button" data-icon="delete" data-inline="true">Cancelar</a>
+                
+                
+            </div>
+
+            <div data-role="footer" data-position="fixed">
+                <h3>Intergadora-3-C-DSM-Equipo-3</h3>
+            </div>
+
+        </div>
+
+        <!-- Página para ordenar del menu -->
+        <div data-role="page" id="Menu" data-theme="d" data-dialog="true" >
+            <div data-role="header">
+                <h1>Seleccion de su orden...</h1>
+                <a href="#" data-role="button" data-theme="a" data-icon="arrow-l" data-iconpos="notext" data-rel="back"></a>
+            </div>
+            <div data-role="content">
+                <form id="registroForm">                   
+                    <label for="usuarioR">Platillo 1:  </label>
+                    <a data-role="button"  data-theme="a" data-icon="check" data-inline="true" onclick="actualizarusuario()" ;>Añadir</a>
+                    <a href="#Menu" data-role="button" data-icon="delete" data-inline="true">Cancelar</a>
+
+                    <label for="contrasenaR">Platillo 2:  </label>
+                    <a data-role="button"  data-theme="a" data-icon="check" data-inline="true" onclick="actualizarusuario()" ;>Añadir</a>
+                    <a href="#Menu" data-role="button" data-icon="delete" data-inline="true">Cancelar</a>
+
+                    <label for="confirmaContrasena">Platillo 3:  </label>
+                    <a data-role="button"  data-theme="a" data-icon="check" data-inline="true" onclick="actualizarusuario()" ;>Añadir</a>
+                    <a href="#Menu" data-role="button" data-icon="delete" data-inline="true">Cancelar</a>
+
+                    <h3></h3>
+                    <a href="#Pago" data-role="button" data-icon="grid" data-inline="true" data-theme="a">Enviar solicitud</a>
+
+                    <a href="#inicio" data-role="button" data-icon="delete" data-inline="true" data-theme="e" onclick="">Cancelar</a>
+                </form>
+            </div>
+        </div>
+
+        <!-- Página para mostrar orden-->
+        <div data-role="page" id="mostrarMenu" data-theme="d" data-dialog="true">
+            <div data-role="header">
+                <h1>MESA</h1>
+            </div>
+            <div data-role="content">
+                <h2>Lista de Platillos solicitados</h2>
+                <ul id="listaUsuarios" data-role="listview" data-inset="true">                    
+                </ul>
+            </div>
+        </div>
+
+        <!-- Página para actualizar / eliminar ordenes para el chef -->
+        <div data-role="page" id="actualizaElimina" data-theme="a" data-dialog="true">
+            <div data-role="header">
+                <h1>Acciones del registro</h1>
+            </div>
+            <div data-role="content">
+                <h1>Actualiza o elimina el registro</h1>
+                <form id="accionesForm">
+                    <label for="usuarioA">Usuario:</label>
+                    <input type="text" id="usuarioA" placeholder="Ingresa tu usuario...">
+
+                    <label for="contrasenaA">Contraseña:</label>
+                    <input type="text" placeholder="Escribe tu contraseña..." id="contrasenaA">
+
+                    <a href="#" data-role="button" data-icon="edit" data-inline="true" onclick="actualizarUsuario();">Actualizar</a>
+
+                    <a href="#" data-role="button" data-icon="delete" data-inline="true" onclick="eliminarUsuario();">Eliminar</a>
+
+                    <a href="#login" data-role="button" data-icon="back" data-inline="true" >Cancelar</a>
+                </form>
+            </div>
+        </div>
+
+        <!-- Página para pagar las deudas-->
+        <div data-role="page" id="Pago" data-theme="d" data-dialog="true">
+            <div data-role="header">
+                <h1>Forma en que pagara!...</h1>
+            </div>
+            <div data-role="content">
+                <label>Nombre:</label>
+                <input type="text" placeholder="Nombre del propietario">
+
+                <h2>Debito o Credito</h2>
+                <label>Numero de tarjeta:</label>
+                <input type="number" placeholder="######  ######  ####">
+
+                <label>Clave NIP:</label>
+                <input type="number" placeholder="####">
+
+                <label>Fecha de Vencimiento:</label>
+                <input type="text" placeholder="00/00">
+
+                <a href="#mostrarMenu" data-role="button" data-icon="plus" data-inline="true" data-theme="d" onclick="mostrarusuario();">Pagar</a>
+
+                    <a href="#Menu" data-role="button" data-icon="delete" data-inline="true" data-theme="d" onclick="">Cancelar</a>
+
+                    <a href="#Metodo" data-role="button" data-icon="delete" data-inline="true" data-theme="d">PAYPAL</a>
+            </div>
+        </div>
+        <!-- Otro metodo -->
+        <div data-role="page" id="Metodo" data-theme="a" data-dialog="true">
+            <div data-role="header">
+                <h1>Metodo PAYPAL</h1>
+            </div>
+            <div data-role="content">
+                <h2></h2>
+                <ul id="listaUsuarios" data-role="listview" data-inset="true">                    
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
